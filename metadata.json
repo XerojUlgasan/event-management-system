@@ -1,0 +1,6 @@
+{
+  "name": "Clemora - AI Event Planning & Resource Management",
+  "description": "An AI-integrated event planning, resource management, and automated customer assistance platform for event and catering service companies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
