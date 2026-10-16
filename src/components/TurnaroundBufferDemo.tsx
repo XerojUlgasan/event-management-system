@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { AlertCircle, CheckCircle2, ShieldAlert, ArrowRight } from 'lucide-react';
+import { AlertCircle, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { ClemoraLogo } from './common/ClemoraLogo.tsx';
 
 export function TurnaroundBufferDemo() {
   const [simulateConflict, setSimulateConflict] = useState<boolean>(false);
@@ -10,7 +11,7 @@ export function TurnaroundBufferDemo() {
       label: 'Loading & Transit',
       duration: '60 min',
       category: 'logistics',
-      color: 'bg-stone-200 text-stone-700',
+      color: 'bg-[#F5EFF7] text-[#35233D] border border-purple-200',
       description: 'Van dispatched with 120 chafers, crystal flutes, and kitchen staging crates.',
     },
     {
@@ -18,7 +19,7 @@ export function TurnaroundBufferDemo() {
       label: 'On-Site Setup',
       duration: '120 min',
       category: 'setup',
-      color: 'bg-amber-100 text-amber-900 border border-amber-300',
+      color: 'bg-[#FDF3F0] text-[#B55238] border border-[#F7D2C6]',
       description: 'Linen pressing, plating lines initialized, and beverage bar station assembled.',
     },
     {
@@ -26,7 +27,7 @@ export function TurnaroundBufferDemo() {
       label: 'Live Event Execution',
       duration: '240 min',
       category: 'event',
-      color: 'bg-slate-900 text-white',
+      color: 'bg-[#35233D] text-white',
       description: 'Seated dinner service, beverage coordination, and course transitions.',
     },
     {
@@ -34,7 +35,7 @@ export function TurnaroundBufferDemo() {
       label: 'Teardown & Repacking',
       duration: '90 min',
       category: 'teardown',
-      color: 'bg-stone-200 text-stone-700',
+      color: 'bg-[#F5EFF7] text-[#35233D] border border-purple-200',
       description: 'Breakdown of service areas, crate loading, and departure inspection.',
     },
     {
@@ -42,7 +43,7 @@ export function TurnaroundBufferDemo() {
       label: 'Sanitization & Turnaround Buffer',
       duration: '150 min',
       category: 'buffer',
-      color: 'bg-[#B45309] text-white',
+      color: 'bg-[#E07A5F] text-white shadow-xs font-semibold',
       description: 'High-temperature warewashing, cutlery polishing, and inventory readiness scan.',
     },
     {
@@ -56,14 +57,15 @@ export function TurnaroundBufferDemo() {
   ];
 
   return (
-    <section id="buffer-engine" className="px-6 lg:px-12 py-16 lg:py-24 border-b border-[#E7E5E4] bg-white">
+    <section id="buffer-engine" className="px-6 lg:px-12 py-16 lg:py-24 border-b border-[#E8DFEB] bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
           <div className="lg:col-span-7">
-            <div className="text-xs font-semibold tracking-wider uppercase text-[#B45309] mb-3">
-              Resource Management & Conflict Engine
+            <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#E07A5F] mb-3 font-mono">
+              <ClemoraLogo variant="icon" theme="light" size="sm" className="w-4 h-4 inline-block" />
+              <span>Resource Management &amp; Conflict Engine</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#35233D] mb-4">
               Why traditional booking systems fail event caterers.
             </h2>
             <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
@@ -77,10 +79,10 @@ export function TurnaroundBufferDemo() {
           <div className="lg:col-span-5 flex flex-col items-start lg:items-end justify-center">
             <button
               onClick={() => setSimulateConflict(!simulateConflict)}
-              className={`px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-2 border ${
+              className={`px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-2 border cursor-pointer ${
                 simulateConflict
                   ? 'bg-rose-50 text-rose-800 border-rose-300 hover:bg-rose-100'
-                  : 'bg-stone-100 text-[#0F172A] border-stone-300 hover:bg-stone-200'
+                  : 'bg-[#FAF7F5] text-[#35233D] border-[#E8DFEB] hover:bg-[#F5EFF7]'
               }`}
             >
               {simulateConflict ? (
@@ -90,7 +92,7 @@ export function TurnaroundBufferDemo() {
                 </>
               ) : (
                 <>
-                  <AlertCircle className="w-4 h-4 text-[#B45309]" />
+                  <AlertCircle className="w-4 h-4 text-[#E07A5F]" />
                   <span>Simulate Overlapping Booking (7:30 PM)</span>
                 </>
               )}
@@ -102,10 +104,10 @@ export function TurnaroundBufferDemo() {
         </div>
 
         {/* Timeline Visualization */}
-        <div className="bg-[#FAFAF8] p-6 lg:p-8 rounded-xl border border-[#E7E5E4] mb-8">
-          <div className="text-xs font-bold uppercase tracking-wider text-stone-700 mb-6 flex items-center justify-between">
+        <div className="bg-[#FAF7F5] p-6 lg:p-8 rounded-xl border border-[#E8DFEB] mb-8">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#35233D] mb-6 flex items-center justify-between">
             <span>Booking Resource Timeline: Sat Oct 24 (120 Guest Banquet)</span>
-            <span className="font-mono text-stone-500 font-normal">Buffer Model v2.4</span>
+            <span className="font-mono text-stone-500 font-normal">Buffer Model v4.2</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-6 gap-3 mb-6">
@@ -141,7 +143,7 @@ export function TurnaroundBufferDemo() {
                   <p className="text-rose-800 leading-relaxed">
                     A customer inquired for a 7:30 PM cocktail reception requesting 120 matching glassware
                     sets and induction chafers. Clemora blocked immediate confirmation because Booking #1
-                    teardown & sanitization buffer remains active until 11:00 PM.
+                    teardown &amp; sanitization buffer remains active until 11:00 PM.
                   </p>
                   <div className="pt-2 font-medium text-rose-900 flex items-center gap-2">
                     <span>Automated Action:</span>
@@ -153,11 +155,11 @@ export function TurnaroundBufferDemo() {
               </div>
             </div>
           ) : (
-            <div className="p-4 rounded-lg bg-stone-100 border border-stone-200 text-xs text-stone-700 flex items-center justify-between">
+            <div className="p-4 rounded-lg bg-white border border-[#E8DFEB] text-xs text-stone-700 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>
-                  All turnaround buffers verified. 3.5 hours of sanitization & restock protected before next dispatch.
+                  All turnaround buffers verified. 3.5 hours of sanitization &amp; restock protected before next dispatch.
                 </span>
               </div>
               <span className="font-mono text-[11px] text-stone-500">Status: Operational</span>
@@ -166,17 +168,17 @@ export function TurnaroundBufferDemo() {
         </div>
 
         {/* 3 Pillar Comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[#E7E5E4] text-xs text-stone-600">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[#E8DFEB] text-xs text-stone-600">
           <div>
-            <span className="font-bold text-[#0F172A] block mb-1">
-              Vehicle & Transit Modeling
+            <span className="font-bold text-[#35233D] block mb-1">
+              Vehicle &amp; Transit Modeling
             </span>
             <span>
               Computes round-trip mileage and loading dock turnaround so dispatch drivers aren't stranded.
             </span>
           </div>
           <div>
-            <span className="font-bold text-[#0F172A] block mb-1">
+            <span className="font-bold text-[#35233D] block mb-1">
               Warewash Sanitation Turnaround
             </span>
             <span>
@@ -184,7 +186,7 @@ export function TurnaroundBufferDemo() {
             </span>
           </div>
           <div>
-            <span className="font-bold text-[#0F172A] block mb-1">
+            <span className="font-bold text-[#35233D] block mb-1">
               Live Staff Overtime Safeguards
             </span>
             <span>

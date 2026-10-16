@@ -1,4 +1,5 @@
 import { MessageSquare, Clock3, Layers } from 'lucide-react';
+import { ClemoraLogo } from './common/ClemoraLogo.tsx';
 
 export function CapabilitiesSection() {
   const capabilities = [
@@ -44,13 +45,14 @@ export function CapabilitiesSection() {
   ];
 
   return (
-    <section id="capabilities" className="px-6 lg:px-12 py-16 lg:py-24 border-b border-[#E7E5E4] bg-white">
+    <section id="capabilities" className="px-6 lg:px-12 py-16 lg:py-24 border-b border-[#E8DFEB] bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-2xl mb-12">
-          <div className="text-xs font-semibold tracking-wider uppercase text-[#B45309] mb-3">
-            Core Architecture
+          <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#E07A5F] mb-3 font-mono">
+            <ClemoraLogo variant="icon" theme="light" size="xs" />
+            <span>Core Architecture</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#35233D] mb-4">
             Built to solve the real operational friction of catering and events.
           </h2>
           <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
@@ -65,18 +67,18 @@ export function CapabilitiesSection() {
             return (
               <div
                 key={item.index}
-                className="flex flex-col p-6 rounded-xl border border-[#E7E5E4] bg-[#FAFAF8] hover:border-stone-400 transition-colors"
+                className="flex flex-col p-6 rounded-xl border border-[#E8DFEB] bg-[#FAF7F5] hover:border-[#E07A5F]/60 transition-all shadow-2xs hover:shadow-xs"
               >
                 <div className="flex items-center justify-between mb-6">
-                  <span className="font-mono text-sm font-bold text-[#B45309]">
+                  <span className="font-mono text-sm font-bold text-[#E07A5F]">
                     {item.index}
                   </span>
-                  <div className="p-2 rounded-lg bg-stone-200/60 text-[#0F172A]">
+                  <div className="p-2 rounded-lg bg-[#FDF3F0] text-[#E07A5F] border border-[#F7D2C6]">
                     <IconComponent className="w-5 h-5" />
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#0F172A] mb-2 leading-snug">
+                <h3 className="text-lg font-bold text-[#35233D] mb-2 leading-snug">
                   {item.title}
                 </h3>
                 <div className="text-xs font-medium text-stone-500 mb-4">
@@ -87,10 +89,10 @@ export function CapabilitiesSection() {
                   {item.description}
                 </p>
 
-                <div className="pt-4 border-t border-[#E7E5E4] space-y-2">
+                <div className="pt-4 border-t border-[#E8DFEB] space-y-2">
                   {item.keyAspects.map((aspect, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs text-stone-600">
-                      <span className="text-[#B45309] mt-0.5" aria-hidden="true">
+                      <span className="text-[#E07A5F] mt-0.5" aria-hidden="true">
                         —
                       </span>
                       <span>{aspect}</span>
