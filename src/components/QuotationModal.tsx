@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { X, CheckCircle2 } from 'lucide-react';
-import { ClemoraLogo } from './common/ClemoraLogo.tsx';
 
 export interface QuoteDetails {
   eventType?: string;
@@ -52,12 +51,12 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#24162B]/75 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
     >
-      <div className="bg-white rounded-xl border border-[#E8DFEB] max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-xl border border-[#E7E5E4] max-w-lg w-full p-6 sm:p-8 shadow-xl relative max-h-[90vh] overflow-y-auto">
         <button
           onClick={handleResetAndClose}
-          className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 transition-colors rounded-lg cursor-pointer"
+          className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 transition-colors rounded-lg"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -68,7 +67,7 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
             <div className="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-[#35233D]">
+            <h3 className="text-xl font-bold text-[#0F172A]">
               Quotation Request Received
             </h3>
             <p className="text-sm text-stone-600 max-w-md mx-auto">
@@ -78,8 +77,8 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
               <span className="font-semibold text-stone-900">{email}</span>.
             </p>
 
-            <div className="bg-[#FAF7F5] p-4 rounded-lg border border-[#E8DFEB] text-left text-xs space-y-1 font-mono text-stone-700">
-              <div>Ref ID: <span className="font-bold text-[#35233D]">CLM-2026-9481</span></div>
+            <div className="bg-stone-50 p-4 rounded-lg border border-[#E7E5E4] text-left text-xs space-y-1 font-mono text-stone-700">
+              <div>Ref ID: <span className="font-bold">CLM-2026-9481</span></div>
               <div>Event: {initialDetails?.eventType || 'Custom Catering Event'}</div>
               <div>Guests: {initialDetails?.guests || 100} guests</div>
               <div>Estimated Total: ${initialDetails?.estimatedTotal?.toLocaleString() || '7,200'}</div>
@@ -87,33 +86,30 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
 
             <button
               onClick={handleResetAndClose}
-              className="mt-4 px-6 py-2.5 text-xs font-bold text-white bg-[#35233D] hover:bg-[#24162B] rounded-lg transition-colors cursor-pointer"
+              className="mt-4 px-6 py-2.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-lg transition-colors"
             >
-              Done &amp; Return to Site
+              Done & Return to Site
             </button>
           </div>
         ) : (
           <div>
-            <div className="mb-4">
-              <ClemoraLogo variant="full" theme="light" size="sm" />
+            <div className="text-xs font-semibold uppercase tracking-wider text-[#B45309] mb-1">
+              Direct Quotation & Booking
             </div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-[#E07A5F] mb-1 font-mono">
-              Direct Quotation &amp; Booking
-            </div>
-            <h3 className="text-xl font-bold text-[#35233D] mb-2">
-              Lock In Your Event Date &amp; Package
+            <h3 className="text-xl font-bold text-[#0F172A] mb-2">
+              Lock In Your Event Date & Package
             </h3>
             <p className="text-xs text-stone-600 mb-6">
               Our automated system cross-checks kitchen prep time, gear sanitation buffers, and staff availability before confirming your inquiry.
             </p>
 
             {initialDetails && (
-              <div className="p-3 bg-[#FAF7F5] rounded-lg border border-[#E8DFEB] mb-6 text-xs text-stone-700 flex items-center justify-between">
+              <div className="p-3 bg-stone-50 rounded-lg border border-[#E7E5E4] mb-6 text-xs text-stone-700 flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-[#35233D]">{initialDetails.eventType}</span>
+                  <span className="font-bold">{initialDetails.eventType}</span>
                   <span className="text-stone-500"> ({initialDetails.guests} guests · {initialDetails.tierName})</span>
                 </div>
-                <div className="font-mono font-bold text-[#E07A5F]">
+                <div className="font-mono font-bold text-[#0F172A]">
                   Est. ${initialDetails.estimatedTotal?.toLocaleString()}
                 </div>
               </div>
@@ -136,7 +132,7 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
                   placeholder="e.g. Katherine Hayes"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-[#E8DFEB] focus:outline-none focus:border-[#35233D] bg-[#FAF7F5]"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-[#E7E5E4] focus:outline-none focus:border-[#0F172A] bg-stone-50/50"
                 />
               </div>
 
@@ -151,7 +147,7 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
                     placeholder="name@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E8DFEB] focus:outline-none focus:border-[#35233D] bg-[#FAF7F5]"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E7E5E4] focus:outline-none focus:border-[#0F172A] bg-stone-50/50"
                   />
                 </div>
                 <div>
@@ -163,7 +159,7 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
                     placeholder="+1 (555) 000-0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E8DFEB] focus:outline-none focus:border-[#35233D] bg-[#FAF7F5]"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E7E5E4] focus:outline-none focus:border-[#0F172A] bg-stone-50/50"
                   />
                 </div>
               </div>
@@ -177,7 +173,7 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E8DFEB] focus:outline-none focus:border-[#35233D] bg-[#FAF7F5]"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E7E5E4] focus:outline-none focus:border-[#0F172A] bg-stone-50/50"
                   />
                 </div>
                 <div>
@@ -189,7 +185,7 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
                     placeholder="e.g. Skyline Pavilion, Seattle"
                     value={venue}
                     onChange={(e) => setVenue(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E8DFEB] focus:outline-none focus:border-[#35233D] bg-[#FAF7F5]"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#E7E5E4] focus:outline-none focus:border-[#0F172A] bg-stone-50/50"
                   />
                 </div>
               </div>
@@ -203,13 +199,13 @@ export function QuotationModal({ isOpen, onClose, initialDetails }: QuotationMod
                   placeholder="e.g. 12 vegetarian guests, 3 gluten-free, load-in requires service elevator"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-[#E8DFEB] focus:outline-none focus:border-[#35233D] bg-[#FAF7F5]"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-[#E7E5E4] focus:outline-none focus:border-[#0F172A] bg-stone-50/50"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 px-4 text-xs font-bold text-white bg-[#E07A5F] hover:bg-[#CB674D] rounded-lg transition-colors mt-2 cursor-pointer shadow-xs active:scale-95"
+                className="w-full py-3 px-4 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-lg transition-colors mt-2"
               >
                 Submit Quotation Request
               </button>

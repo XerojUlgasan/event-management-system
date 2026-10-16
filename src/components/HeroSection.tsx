@@ -1,196 +1,110 @@
-import { useState } from 'react';
-import { ArrowRight, ShieldCheck, Clock, Layers } from 'lucide-react';
-import { ClemoraLogo } from './common/ClemoraLogo.tsx';
-
 interface HeroSectionProps {
   onExploreEstimator: () => void;
   onExploreBuffer: () => void;
-  onOpenSignIn?: () => void;
-  onOpenSignUp?: () => void;
 }
 
-export function HeroSection({
-  onExploreEstimator,
-  onExploreBuffer,
-  onOpenSignIn,
-  onOpenSignUp,
-}: HeroSectionProps) {
-  const [activeTheme, setActiveTheme] = useState<'evening' | 'pavilion'>('evening');
-
-  const bgImage =
-    activeTheme === 'evening'
-      ? '/src/assets/images/luxury_banquet_hero_1792162588544.jpg'
-      : '/src/assets/images/luxury_catering_venue_1792162393940.jpg';
-
+export function HeroSection({ onExploreEstimator, onExploreBuffer }: HeroSectionProps) {
   return (
-    <section className="relative min-h-[640px] lg:min-h-[760px] flex flex-col justify-between px-6 lg:px-12 pt-16 pb-14 border-b border-[#E8DFEB] overflow-hidden bg-[#24162B]">
-      {/* Full-bleed background image with right-weighted positioning */}
-      <div
-        className="absolute inset-0 bg-cover bg-right lg:bg-center bg-no-repeat transition-all duration-1000 pointer-events-none scale-100"
-        style={{ backgroundImage: `url('${bgImage}')` }}
-        aria-hidden="true"
-      />
-
-      {/* Horizontal Gradient Overlay: Rich royal plum on the left fading smoothly across */}
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-[#24162B] via-[#24162B]/95 sm:via-[#24162B]/90 md:via-[#24162B]/80 to-[#24162B]/35 lg:to-transparent pointer-events-none"
-        aria-hidden="true"
-      />
-
-      {/* Vertical Ambient Shadow Vignette */}
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-[#24162B] via-transparent to-[#24162B]/75 pointer-events-none"
-        aria-hidden="true"
-      />
-
-      {/* Warm Coral Ambient Glow */}
-      <div
-        className="absolute -left-20 top-1/4 w-96 h-96 rounded-full bg-[#E07A5F]/15 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-
-      {/* Main Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full pt-4 sm:pt-8 my-auto">
-        <div className="max-w-2xl lg:max-w-3xl flex flex-col items-start">
-          
-          {/* Top Eyebrow Tag + Theme Switcher */}
-          <div className="w-full flex items-center justify-between flex-wrap gap-3 mb-6">
-            <div className="flex items-center gap-2.5 text-xs font-semibold tracking-wider uppercase text-[#E07A5F]">
-              <ClemoraLogo variant="icon" theme="dark" size="sm" className="w-5 h-5 inline-block" />
-              <span>Event Operations &amp; Turnaround Logistics</span>
+    <section className="relative px-6 lg:px-12 pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-[#E7E5E4]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Clear Value Proposition */}
+          <div className="lg:col-span-6 flex flex-col items-start">
+            <div className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#B45309] mb-4">
+              <span>Event Logistics</span>
+              <span aria-hidden="true">·</span>
+              <span>Catering Operations</span>
+              <span aria-hidden="true">·</span>
+              <span>Automated Turnaround</span>
             </div>
 
-            {/* Subtle Atmosphere Switcher */}
-            <div className="flex items-center gap-2 text-xs text-purple-200/80 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
-              <span className="text-[11px] font-medium text-purple-200/60">Venue Atmosphere:</span>
-              <button
-                type="button"
-                onClick={() => setActiveTheme('evening')}
-                className={`text-[11px] transition-colors cursor-pointer ${
-                  activeTheme === 'evening'
-                    ? 'font-bold text-[#E07A5F] underline underline-offset-2 decoration-[#E07A5F]'
-                    : 'text-purple-200/80 hover:text-white'
-                }`}
-              >
-                Evening Gala
-              </button>
-              <span aria-hidden="true" className="text-purple-300/40">·</span>
-              <button
-                type="button"
-                onClick={() => setActiveTheme('pavilion')}
-                className={`text-[11px] transition-colors cursor-pointer ${
-                  activeTheme === 'pavilion'
-                    ? 'font-bold text-[#E07A5F] underline underline-offset-2 decoration-[#E07A5F]'
-                    : 'text-purple-200/80 hover:text-white'
-                }`}
-              >
-                Daylight Pavilion
-              </button>
-            </div>
-          </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F172A] leading-[1.15] mb-6 text-balance">
+              Intelligent event planning and resource operations, unified.
+            </h1>
 
-          {/* High-Impact Hero Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-2 text-balance">
-            Clear Value for Every Event &amp; Catering Company
-          </h1>
-
-          {/* Signature Vertical Accent Bar Callout in Terracotta Coral */}
-          <div className="border-l-4 border-[#E07A5F] pl-4 sm:pl-5 py-1.5 my-6 sm:my-8 max-w-2xl bg-white/5 rounded-r-lg">
-            <p className="text-base sm:text-lg text-purple-100/90 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-stone-600 leading-relaxed mb-8 max-w-xl">
               Clemora eliminates booking bottlenecks for event and catering companies.
               Our platform connects customer inquiry handling, instant package quotation,
-              and real-time equipment and staff turnaround scheduling in one quiet, zero-collision system.
+              and real-time equipment and staff turnaround scheduling in one quiet system.
             </p>
-          </div>
 
-          {/* Call-to-Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 mt-2">
-            <button
-              onClick={onExploreEstimator}
-              className="px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-[#E07A5F] hover:bg-[#CB674D] rounded-lg shadow-lg hover:shadow-[#E07A5F]/30 transition-all whitespace-nowrap cursor-pointer active:scale-95 flex items-center gap-2"
-            >
-              <span>Estimate Event Package</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={onExploreBuffer}
-              className="px-6 py-3.5 text-xs sm:text-sm font-semibold text-purple-100 hover:text-white bg-white/10 hover:bg-white/15 border border-white/20 rounded-lg backdrop-blur-sm transition-all whitespace-nowrap cursor-pointer"
-            >
-              Inspect Turnaround Engine
-            </button>
-            {onOpenSignIn && (
+            <div className="flex flex-wrap items-center gap-4">
               <button
-                onClick={onOpenSignIn}
-                className="px-5 py-3.5 text-xs sm:text-sm font-semibold text-[#E07A5F] hover:text-white bg-[#24162B]/80 hover:bg-[#35233D] border border-[#E07A5F]/40 rounded-lg backdrop-blur-sm transition-all whitespace-nowrap cursor-pointer"
+                onClick={onExploreEstimator}
+                className="px-6 py-3 text-sm font-semibold text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-lg transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F172A]"
               >
-                Sign In / Sign Up
+                Estimate Event Package
               </button>
-            )}
+              <button
+                onClick={onExploreBuffer}
+                className="px-6 py-3 text-sm font-semibold text-[#0F172A] bg-stone-100 hover:bg-stone-200 border border-[#E7E5E4] rounded-lg transition-colors whitespace-nowrap"
+              >
+                Inspect Turnaround Engine
+              </button>
+            </div>
+
+            {/* Unboxed Metadata / Guarantees */}
+            <div className="mt-10 pt-6 border-t border-[#E7E5E4] w-full flex items-center flex-wrap gap-x-6 gap-y-2 text-xs text-stone-500">
+              <span className="font-medium text-stone-700">0% Double-Booking Guarantee</span>
+              <span aria-hidden="true">·</span>
+              <span>Dynamic Staff-to-Guest Ratios</span>
+              <span aria-hidden="true">·</span>
+              <span>Sanitation & Transit Buffering</span>
+            </div>
           </div>
 
-          {/* Unboxed Meta Proof Notes */}
-          <div className="mt-8 pt-5 border-t border-white/15 w-full flex items-center flex-wrap gap-x-5 gap-y-2 text-xs text-purple-200/70">
-            <span className="font-semibold text-[#E07A5F]">0% Double-Booking Guarantee</span>
-            <span aria-hidden="true" className="text-purple-300/40">·</span>
-            <span>Dynamic Staff-to-Guest Ratios</span>
-            <span aria-hidden="true" className="text-purple-300/40">·</span>
-            <span>Sanitation &amp; Transit Buffering</span>
+          {/* Right Column: Hero Visual Asset */}
+          <div className="lg:col-span-6">
+            <div className="relative rounded-2xl overflow-hidden border border-[#E7E5E4] shadow-sm bg-stone-100">
+              <img
+                src="/src/assets/images/hero_event_catering_banquet_1792158710813.jpg"
+                alt="Contemporary light-filled glass pavilion styled for a luxury seated banquet event"
+                referrerPolicy="no-referrer"
+                className="w-full h-auto max-h-[480px] object-cover"
+                loading="eager"
+              />
+              <div className="p-4 bg-white/95 border-t border-[#E7E5E4] flex items-center justify-between text-xs text-stone-600">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold text-[#0F172A]">Grand Pavilion Staging</span>
+                  <span aria-hidden="true">·</span>
+                  <span>140 Guests</span>
+                </div>
+                <span className="tabular-nums font-mono text-stone-500">Buffer time: 3.5 hrs</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Proof Strip with Glassmorphism */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full mt-12 pt-6 border-t border-white/15">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
-          <div className="flex items-start gap-3.5 p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/10">
-            <div className="p-2 rounded-lg bg-[#E07A5F]/20 text-[#E07A5F] shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold tracking-tight text-white font-mono tabular-nums">
-                  0%
-                </span>
-                <span className="text-xs font-semibold text-purple-100">Conflict Rate</span>
-              </div>
-              <span className="text-xs text-purple-200/80 mt-1 leading-snug">
-                Transit, loading, and sanitization buffer time enforced automatically before approval.
-              </span>
-            </div>
+        {/* Full-width 3-Metric Proof Strip Below Hero */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 pt-10 border-t border-[#E7E5E4]">
+          <div className="flex flex-col">
+            <span className="text-3xl font-bold tracking-tight text-[#0F172A] font-mono tabular-nums">
+              0%
+            </span>
+            <span className="text-xs font-semibold text-stone-900 mt-1">Resource Overlap Rate</span>
+            <span className="text-xs text-stone-500 mt-0.5">
+              Equipment transit, setup, and teardown buffer time enforced before reservation approval.
+            </span>
           </div>
 
-          <div className="flex items-start gap-3.5 p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/10">
-            <div className="p-2 rounded-lg bg-[#E07A5F]/20 text-[#E07A5F] shrink-0">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold tracking-tight text-white font-mono tabular-nums">
-                  &lt; 3 mins
-                </span>
-                <span className="text-xs font-semibold text-purple-100">Quotation Formulation</span>
-              </div>
-              <span className="text-xs text-purple-200/80 mt-1 leading-snug">
-                Customers receive accurate menu proposals matching their headcounts and dietary bounds.
-              </span>
-            </div>
+          <div className="flex flex-col">
+            <span className="text-3xl font-bold tracking-tight text-[#0F172A] font-mono tabular-nums">
+              &lt; 3 mins
+            </span>
+            <span className="text-xs font-semibold text-stone-900 mt-1">Quotation Formulation</span>
+            <span className="text-xs text-stone-500 mt-0.5">
+              Customers receive accurate menu proposals matching their exact headcounts and dietary bounds.
+            </span>
           </div>
 
-          <div className="flex items-start gap-3.5 p-4 rounded-xl bg-black/40 backdrop-blur-md border border-white/10">
-            <div className="p-2 rounded-lg bg-[#E07A5F]/20 text-[#E07A5F] shrink-0">
-              <Layers className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold tracking-tight text-white font-mono tabular-nums">
-                  100%
-                </span>
-                <span className="text-xs font-semibold text-purple-100">Live Inventory Visibility</span>
-              </div>
-              <span className="text-xs text-purple-200/80 mt-1 leading-snug">
-                Chafing sets, crystal glassware, linens, and culinary stations mapped to active bookings.
-              </span>
-            </div>
+          <div className="flex flex-col">
+            <span className="text-3xl font-bold tracking-tight text-[#0F172A] font-mono tabular-nums">
+              100%
+            </span>
+            <span className="text-xs font-semibold text-stone-900 mt-1">Live Inventory Visibility</span>
+            <span className="text-xs text-stone-500 mt-0.5">
+              Chafing sets, crystal glassware, linens, and culinary stations mapped to active bookings.
+            </span>
           </div>
         </div>
       </div>

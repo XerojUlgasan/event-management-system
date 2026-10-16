@@ -1,60 +1,10 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --brand-plum-dark: #24162B;
-    --brand-plum: #35233D;
-    --brand-plum-light: #4A3353;
-    --brand-plum-subtle: #F5EFF7;
-    --brand-coral: #E07A5F;
-    --brand-coral-hover: #CB674D;
-    --brand-coral-light: #FDF3F0;
-    --brand-coral-border: #F7D2C6;
-    --brand-canvas: #FAF7F5;
-    --brand-border: #E8DFEB;
-  }
-
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
-    background-color: #FAF7F5;
-    color: #24162B;
+    background-color: #FAFAF8;
+    color: #1C1917;
   }
-}
-
-/* Custom Palette Utilities derived directly from the Clemora Logo */
-.bg-brand-plum {
-  background-color: #35233D;
-}
-.bg-brand-plum-dark {
-  background-color: #24162B;
-}
-.bg-brand-plum-light {
-  background-color: #4A3353;
-}
-.text-brand-plum {
-  color: #35233D;
-}
-.border-brand-plum {
-  border-color: #35233D;
-}
-
-.bg-brand-coral {
-  background-color: #E07A5F;
-}
-.bg-brand-coral:hover {
-  background-color: #CB674D;
-}
-.text-brand-coral {
-  color: #E07A5F;
-}
-.border-brand-coral {
-  border-color: #E07A5F;
-}
-
-.bg-brand-coral-light {
-  background-color: #FDF3F0;
-}
-.text-brand-coral-dark {
-  color: #B55238;
 }
