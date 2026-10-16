@@ -1,66 +1,112 @@
-import { Sparkles } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { User, LogOut, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface TopBarProps {
   onRequestQuote: () => void;
+  onOpenAuth: (mode?: 'login' | 'register') => void;
+  onGoToDashboard: () => void;
+  isDashboardActive?: boolean;
 }
 
-export function TopBar({ onRequestQuote }: TopBarProps) {
+export function TopBar({
+  onRequestQuote,
+  onOpenAuth,
+  onGoToDashboard,
+  isDashboardActive = false,
+}: TopBarProps) {
+  const { currentUser, logout } = useAuth();
+
   return (
-    <header className="sticky top-0 z-40 bg-[#0B1120]/90 backdrop-blur-md border-b border-white/10 px-6 lg:px-12 py-4 transition-colors">
+    <header className="sticky top-0 z-40 bg-[#FAFAF8]/95 backdrop-blur-sm border-b border-[#E7E5E4] px-6 lg:px-12 py-3.5">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-8">
-        {/* Zone 1: Brand Logo + Wordmark */}
+        {/* Zone 1: Single text element wordmark */}
         <a
           href="#"
-          className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-white whitespace-nowrap shrink-0 group"
+          className="text-xl font-bold tracking-tight text-[#0F172A] whitespace-nowrap shrink-0"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
-            <Sparkles className="w-4 h-4" />
-          </div>
-          <span>Clemora</span>
+          Clemora
         </a>
 
-        {/* Zone 2: Clean single-line nav links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-300">
+        {/* Zone 2: 4-5 clean single-line nav links */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
           <a
             href="#capabilities"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0"
           >
             Capabilities
           </a>
           <a
             href="#estimator"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0"
           >
             Quotation Estimator
           </a>
           <a
             href="#buffer-engine"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0"
           >
             Turnaround Engine
           </a>
           <a
             href="#showcase"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0"
           >
             Past Events
           </a>
-          <a
-            href="#palette"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
-          >
-            Design System
-          </a>
+          {currentUser ? (
+            <button
+              onClick={onGoToDashboard}
+              className="hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0 font-semibold text-[#0F172A]"
+            >
+              My Dashboard
+            </button>
+          ) : (
+            <button
+              onClick={() => onOpenAuth('register')}
+              className="hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0"
+            >
+              Client Registration
+            </button>
+          )}
         </nav>
 
         {/* Zone 3: 1 primary action */}
         <div className="flex items-center gap-3 shrink-0">
-          <button
-            onClick={onRequestQuote}
-            className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 rounded-lg shadow-sm hover:shadow-md transition-all whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:scale-95 cursor-pointer"
-          >
-            Request Quotation
-          </button>
+          {currentUser ? (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={onGoToDashboard}
+                className="px-3.5 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-lg transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 shadow-sm"
+              >
+                <span>{currentUser.role} Portal</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+
+              <button
+                onClick={logout}
+                title="Sign Out"
+                className="p-1.5 text-stone-500 hover:text-rose-600 hover:bg-stone-100 rounded-lg transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => onOpenAuth('login')}
+                className="px-3.5 py-1.5 text-xs font-semibold text-[#0F172A] hover:bg-stone-100 border border-stone-300 rounded-lg transition-colors whitespace-nowrap shrink-0"
+              >
+                Sign In
+              </button>
+
+              <button
+                onClick={onRequestQuote}
+                className="hidden sm:inline-flex px-3.5 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-sm"
+              >
+                Request Quote
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>
